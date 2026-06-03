@@ -1,0 +1,1425 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AI大模型应用与工程化路线图 - Bioinformatics Handbook</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-0392ca55.css">
+        <link rel="stylesheet" href="../css/chrome-fc474251.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-7715a6b1.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-018a16c3.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Bioinformatics Handbook</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/PreSeqDataLab/bioinformatics" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/PreSeqDataLab/bioinformatics/edit/main/src/Machine Learning/AI大模型应用与工程化路线图.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="ai大模型应用工程化路线图"><a class="header" href="#ai大模型应用工程化路线图">AI大模型应用&amp;工程化路线图</a></h1>
+<h2 id="1-前置知识"><a class="header" href="#1-前置知识">1. 前置知识</a></h2>
+<ul>
+<li><strong>编程语言</strong>
+<ul>
+<li>Python编程基础
+<ul>
+<li>Anaconda、Jupyter、PyCharm等开发环境的安装与配置</li>
+<li>变量、数据类型、控制语句、函数等基础语法</li>
+<li>熟悉Python编码规范（如PEP8），进行简单编程练习</li>
+</ul>
+</li>
+<li>Java编程基础
+<ul>
+<li>基础语法：变量、运算、控制语句</li>
+<li>面向对象编程：类与对象、封装&amp;继承&amp;多态、接口</li>
+<li>集合、IO、多线程、StreamAPI</li>
+</ul>
+</li>
+<li>Go、C#、JavaScript、…</li>
+</ul>
+</li>
+<li><strong>数学基础</strong>
+<ul>
+<li>高等数学：导数、偏导</li>
+<li>线性代数：标量与向量、矩阵与张量、矩阵运算等</li>
+<li>概率与统计：概率分布、贝叶斯定理、似然函数等</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-大模型应用基础"><a class="header" href="#2-大模型应用基础">2. 大模型应用基础</a></h2>
+<ul>
+<li>
+<p><strong>基础知识</strong></p>
+<ul>
+<li>AI与大模型的发展历程
+<ul>
+<li>从机器学习到深度学习的飞跃</li>
+<li>大模型的诞生与发展</li>
+</ul>
+</li>
+<li>大模型与通用人工智能
+<ul>
+<li>大模型的起源与发展</li>
+<li>认知与解析、大模型与AGI关系、发展趋势</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>AI应用场景</strong></p>
+<ul>
+<li>自然语言处理-NLP
+<ul>
+<li>分词、词性标注、命名实体识别等NLP基础概念</li>
+<li>文本分类、文本生成、问答系统、信息摘要、机器翻译</li>
+</ul>
+</li>
+<li>计算机视觉-CV
+<ul>
+<li>熟悉图像分类、目标检测、语义分割等CV基本概念</li>
+<li>图像识别、视频分析</li>
+</ul>
+</li>
+<li>语音识别与合成
+<ul>
+<li>语音到文本、文本到语音</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>主流大模型的使用</strong></p>
+<ul>
+<li>国际知名
+<ul>
+<li>Meta：Llama系列</li>
+<li>OpenAI：GPT系列</li>
+<li>Google：Gemini</li>
+<li>Anthropic：Claude系列</li>
+</ul>
+</li>
+<li>国产主流
+<ul>
+<li>深度求索：DeepSeek</li>
+<li>阿里：Qwen系列</li>
+<li>百度：文心大模型</li>
+<li>智谱清言：GLM系列</li>
+</ul>
+</li>
+<li>主流大模型平台的功能特点、优势与适用场景</li>
+</ul>
+</li>
+<li>
+<p><strong>大模型的发展历程、关键推动因素与趋势</strong></p>
+<ul>
+<li>GPT为例</li>
+</ul>
+</li>
+<li>
+<p><strong>架构原理</strong></p>
+<ul>
+<li>Transformer架构讲解与动手实现
+<ul>
+<li>编码器-解码器结构</li>
+<li>自注意力机制与多头注意力机制</li>
+<li>大模型如何理解和表示单词</li>
+<li>大模型如何理解并预测输入的内容</li>
+</ul>
+</li>
+<li>Transformer变体之Bert架构
+<ul>
+<li>使用上下文双向的预测模式（类似于填空）</li>
+</ul>
+</li>
+<li>Transformer变体之GPT架构
+<ul>
+<li>使用从前往后的单向预测模式（类似于补全）</li>
+</ul>
+</li>
+<li>MoE模型
+<ul>
+<li>MoE模型的工作原理</li>
+<li>MoE模型的优点</li>
+<li>MoE模型的应用
+<ul>
+<li>自然语言处理</li>
+<li>计算机视觉</li>
+<li>推荐系统</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>硬件基础</strong></p>
+<ul>
+<li>GPU加速原理
+<ul>
+<li>GPU与CPU计算核心的区别对比</li>
+</ul>
+</li>
+<li>CUDA核心与显存管理</li>
+<li>混合精度训练
+<ul>
+<li>FP16/FP32混合使用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>提示词工程设计</strong></p>
+<ul>
+<li>
+<p><strong>提示词工程基础</strong></p>
+<ul>
+<li>Prompt基本概念、在大模型应用中的重要性</li>
+<li>Prompt四要素：角色、目标、执行方案、输出格式</li>
+<li>Prompt设计的基本原则：简洁性、上下文与语境的设计、问题明确性、结构化与非结构化prompt</li>
+</ul>
+</li>
+<li>
+<p><strong>Prompt调优与技巧</strong></p>
+<ul>
+<li>常见的Prompt工程设计链路</li>
+<li>零样本提示(Zero-Shot)</li>
+<li>少样本提示(Few-Shot)</li>
+<li>链式思考(思维链CoT)</li>
+<li>自我一致性(自洽性, Self-Consistency)</li>
+<li>思维树(Tree-of-thought, ToT)</li>
+<li>优化Prompt的输出效果</li>
+<li>调整Prompt中的语句顺序</li>
+<li>指令和示例的数量与多样性</li>
+<li>负面提示与约束</li>
+<li>增强输出的精确度</li>
+</ul>
+</li>
+<li>
+<p><strong>高级Prompt工程技巧</strong></p>
+<ul>
+<li>指令模型vs推理模型的prompt的不同设计</li>
+<li>复杂任务的多步骤Prompt设计</li>
+<li>解析增强对AI大模型反馈结果的影响</li>
+<li>用prompt调优prompt</li>
+<li>提示词注入</li>
+<li>提示词防御</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>项目实战</strong></p>
+<ul>
+<li>案例：短剧脚本生成</li>
+<li>案例：网络爆款文案生成</li>
+<li>案例：数据查询SQL语句生成</li>
+<li>案例：文本生成任务的Prompt设计（如编写文章、故事生成）</li>
+<li>案例：情感分析与文本分类的Prompt优化</li>
+<li>案例：复杂任务的多步骤Prompt设计（如数据分析报告生成）</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-大模型应用实战之主流开发框架"><a class="header" href="#3-大模型应用实战之主流开发框架">3. 大模型应用实战之主流开发框架</a></h2>
+<ul>
+<li>
+<p><strong>LangChain框架</strong></p>
+<ul>
+<li>LangChain框架简介
+<ul>
+<li>构建大模型应用的完整流程：大模型交互、数据整合、应用部署</li>
+<li>LangChain的安装</li>
+<li>调用大模型三要素：base_url、api_key、model_name</li>
+</ul>
+</li>
+<li>LangChain核心组件
+<ul>
+<li>模型 IO 操作
+<ul>
+<li>几种不同Message</li>
+<li>Invoke、stream、batch、ainvoke等</li>
+<li>Prompt Template</li>
+<li>Output Parsers</li>
+<li>Function Calling</li>
+</ul>
+</li>
+<li>链架构：Chains / LCL
+<ul>
+<li>Chains的设计理念</li>
+<li>传统的Chain</li>
+<li>SequentialChain</li>
+<li>RouterChain</li>
+<li>Chains功能实战</li>
+</ul>
+</li>
+<li>Memory记忆功能
+<ul>
+<li>不借助LangChain，如何实现记忆功能</li>
+<li>Memory模块的设计理念</li>
+<li>如何自定义Memory模块</li>
+<li>spacy工具安装</li>
+<li>内置的Memory模块</li>
+</ul>
+</li>
+<li>智能体Agents
+<ul>
+<li>Agent架构设计理念的前景</li>
+<li>基于LangChain的Agent抽象</li>
+<li>自定义基于ReAct范式的Agents</li>
+<li>使用LangChain定义的ReAct策略</li>
+</ul>
+</li>
+<li>Retrieval
+<ul>
+<li>RAG架构</li>
+<li>Source and data loaders</li>
+<li>Text Splitters</li>
+<li>Text embedding models</li>
+<li>vector store</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>项目实战
+<ul>
+<li>案例1：LangChain构建智能问答系统</li>
+<li>案例2：LangChain实现文档摘要生成</li>
+<li>案例3：LangChain实现AI销售助手</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>LangChain4J框架</strong></p>
+<ul>
+<li>
+<p>LangChain4J框架简介</p>
+<ul>
+<li>LangChain4J的定位</li>
+<li>核心特性：低代码API、内存优化、本地模型支持</li>
+<li>安装：Maven/Gradle依赖配置</li>
+</ul>
+</li>
+<li>
+<p>核心组件</p>
+<ul>
+<li>
+<p>LangChain4J基础架构</p>
+<ul>
+<li>LLM接口：支持OpenAI、DeepSeek、ZhiPu AI、Anthropic</li>
+<li>内容管理：维护对话上下文（Memory），支持短期/长期记忆</li>
+<li>提示模板：动态生成prompt（PromptTemplate），支持变量替换和格式控制</li>
+<li>链（Chain）：串联多个组件（如LLM+数据库查询），实现复杂逻辑</li>
+<li>智能体（Agent）：根据用户输入动态选择工具（API/数据库）执行任务</li>
+</ul>
+</li>
+<li>
+<p>聊天与语言模型</p>
+<ul>
+<li>LLM API类型：LanguageModel、ChatLanguageModel</li>
+<li>ChatLanguageModel核心方法</li>
+<li>消息类型：UserMessage、AiMessage、SystemMessage、ToolExecutionResultMessage、CustomMessage</li>
+</ul>
+</li>
+<li>
+<p>ChatMemory组件</p>
+<ul>
+<li>ChatMemory的作用：消息管理、持久化存储、特殊消息处理</li>
+<li>核心实现与特性</li>
+</ul>
+</li>
+<li>
+<p>AI Services的使用</p>
+<ul>
+<li>AI Services的定位与优势</li>
+<li>注解支持：@SystemMessage、@UserMessage</li>
+</ul>
+</li>
+<li>
+<p>RAG</p>
+<ul>
+<li>什么是RAG</li>
+<li>RAG核心流程：索引阶段、检索阶段</li>
+<li>RAG类型：EasyRAG、NaiveRAG、AdvancedRAG</li>
+<li>核心API与组件：Document、Metadata、Document Loader、Embedding Model等</li>
+</ul>
+</li>
+<li>
+<p>与SpringBoot集成</p>
+</li>
+</ul>
+</li>
+<li>
+<p>项目实战</p>
+<ul>
+<li>案例1：本地知识问答系统（RAG+ChromaDB）</li>
+<li>案例2：自动化报表分析（代理+表格工具）</li>
+<li>案例3：多模态AI助手（集成TTS/OCR）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>SpringAI &amp; SpringAI Alibaba框架</strong></p>
+<ul>
+<li>Spring AI框架简介
+<ul>
+<li>Spring AI的定位</li>
+<li>核心优势</li>
+<li>安装与配置</li>
+</ul>
+</li>
+<li>核心组件
+<ul>
+<li>模型交互（Model I/O）
+<ul>
+<li>统一接口设计：AiClient与AiStreamClient</li>
+<li>多模型支持：OpenAI、HuggingFace、本地模型集成</li>
+<li>提示工程：动态提示模板（PromptTemplate）与输出解析（OutputParser）</li>
+</ul>
+</li>
+<li>数据整合（Retrieval）
+<ul>
+<li>向量数据库集成：RedisVectorStore、PgVector</li>
+<li>文档处理链：文本分块（TextSplitter）、嵌入模型（EmbeddingModel）</li>
+<li>RAG实现：检索器（Retriever）与生成器组合</li>
+</ul>
+</li>
+<li>链式执行（Chains）
+<ul>
+<li>链式抽象：Chain接口与SequentialChain</li>
+<li>路由链（RouterChain）：多任务动态路由</li>
+<li>实战：文档总结链、问答链构建</li>
+</ul>
+</li>
+<li>代理（Agents）
+<ul>
+<li>代理机制：基于ReAct的决策框架</li>
+<li>工具集成：自定义工具（如数据库查询、API调用）</li>
+<li>案例：销售顾问代理实现</li>
+</ul>
+</li>
+<li>记忆管理（Memory）
+<ul>
+<li>对话状态存储：ChatMemory接口</li>
+<li>存储后端：Redis、In-Memory配置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>项目实战
+<ul>
+<li>案例1：基于Spring AI的智能客服系统（集成RAG）</li>
+<li>案例2：文档自动摘要生成（链式调用+文本分割）</li>
+<li>案例3：企业级RAG问答系统（向量库+代理）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-大模型应用实战之rag开发"><a class="header" href="#4-大模型应用实战之rag开发">4. 大模型应用实战之RAG开发</a></h2>
+<ul>
+<li><strong>EmbeddingModel的嵌入模型</strong>
+<ul>
+<li>嵌入表示的基本概念与工作原理
+<ul>
+<li>Word2vec、GloVe、FastText等经典方法</li>
+</ul>
+</li>
+<li>常见的嵌入技术
+<ul>
+<li>词嵌入：Word2Vec、GloVe、FastText等经典方法</li>
+<li>文本嵌入：BERT、GPT等预训练模型的嵌入</li>
+<li>图像和音视频的嵌入表示</li>
+<li>特征嵌入：如何将结构化数据转为嵌入表示</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>VectorStore向量存储</strong>
+<ul>
+<li>向量数据库介绍
+<ul>
+<li>如何存储和检索嵌入</li>
+<li>常见的向量数据库：Milvus、Chroma、Pinecone、FAISS等</li>
+<li>向量数据库与传统数据库的区别与优劣势对比</li>
+</ul>
+</li>
+<li>向量数据库的核心操作
+<ul>
+<li>Add添加数据</li>
+<li>Query向量搜索</li>
+<li>Update/Delete管理数据</li>
+</ul>
+</li>
+<li>使用向量数据库进行相似性检索</li>
+<li>向量存储应用
+<ul>
+<li>文本相似度搜索：基于向量的文本匹配</li>
+<li>图像识别与搜索：特征向量的向量匹配</li>
+<li>推荐系统：基于用户与物品的向量匹配</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>RAG技术概述</strong>
+<ul>
+<li>LLM面临的主要问题
+<ul>
+<li>信息偏差/幻觉、知识更新滞后、内容不可追溯</li>
+<li>领域专业知识能力欠缺、长文本处理能力较弱</li>
+</ul>
+</li>
+<li>什么是RAG技术？</li>
+<li>RAG技术优势
+<ul>
+<li>外部知识的引用、生成内容的准确性</li>
+<li>高度可定制化、模型的解释性</li>
+<li>数据处理更便捷、降低开发成本</li>
+</ul>
+</li>
+<li>RAG的核心原则与工作流程解析</li>
+</ul>
+</li>
+<li><strong>RAG工程化</strong>
+<ul>
+<li>RAG应用流程
+<ul>
+<li>数据准备阶段
+<ul>
+<li>数据获取</li>
+<li>文本分割</li>
+<li>向量化（Embedding）</li>
+<li>数据入库</li>
+</ul>
+</li>
+<li>检索&amp;生成阶段
+<ul>
+<li>问题向量化</li>
+<li>数据检索</li>
+<li>注入Prompt</li>
+<li>LLM生成答案</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RAG技术关键环节
+<ul>
+<li>数据检索</li>
+<li>Prompt设计</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>RAG技术迭代</strong>
+<ul>
+<li>NaiveRAG→AdvancedRAG→ModularRAG</li>
+<li>GraphRAG
+<ul>
+<li>知识图谱</li>
+<li>GraphRAG原理与工作流程</li>
+</ul>
+</li>
+<li>AgenticRAG</li>
+</ul>
+</li>
+<li><strong>RAG的使用效果评估</strong>
+<ul>
+<li>质量指标
+<ul>
+<li>上下文相关性、答案忠实度、答案相关性</li>
+</ul>
+</li>
+<li>能力指标
+<ul>
+<li>鲁棒性、负面信息的排除能力、应对模糊情况的健壮性</li>
+</ul>
+</li>
+<li>评估工具
+<ul>
+<li>RAGS评估、TruLens评估</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>RAG在AI应用架构中的使用</strong>
+<ul>
+<li>使用RAG提升对话系统的表现与智能化</li>
+<li>结合检索与生成的实际案例分析</li>
+</ul>
+</li>
+<li><strong>项目实战</strong>
+<ul>
+<li>案例1：QAnything+Chroma+LLM构建企业私有知识库问答/客服助手</li>
+<li>案例2：Dify+DeepSeek构建企业私有知识库问答/客服助手</li>
+<li>案例3：RAGFlow+DeepSeek构建企业级知识库</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-大模型应用实战之agent开发"><a class="header" href="#5-大模型应用实战之agent开发">5. 大模型应用实战之Agent开发</a></h2>
+<ul>
+<li><strong>认识智能体</strong>
+<ul>
+<li>智能体的定义与作用</li>
+<li>智能体的基本架构与功能
+<ul>
+<li>规划（Planning）</li>
+<li>记忆（Memory）</li>
+<li>工具使用（Tools）</li>
+<li>执行（Action）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>工具调用：Function Calling</strong>
+<ul>
+<li>FunctionCalling的概念与应用
+<ul>
+<li>FunctionCalling简单理解</li>
+<li>FunctionCalling的实现过程</li>
+</ul>
+</li>
+<li>跨系统与跨语言的FunctionCalling
+<ul>
+<li>FunctionCalling支持的国产模型介绍</li>
+<li>如何实现不同模型、不同系统的功能调用</li>
+</ul>
+</li>
+<li>FunctionCalling的优化
+<ul>
+<li>提升FunctionCalling的性能与稳定性</li>
+<li>设计高效的FunctionCalling机制</li>
+<li>多Function Calling的使用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>工作流Workflow的搭建与使用</strong>
+<ul>
+<li>为什么我们需要工作流？</li>
+<li>大模型应用工作流的关键要素解析</li>
+<li>Agentfy Workflow的工作流要素演示</li>
+<li>项目实战
+<ul>
+<li>案例1：一键生成学术论文</li>
+<li>案例2：一键生成爆款视频</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Agent系统</strong>
+<ul>
+<li>什么是多Agent？</li>
+<li>AutoGen框架</li>
+<li>MetaGPT框架</li>
+<li>Multi-Agent会话</li>
+</ul>
+</li>
+<li><strong>LangGraph框架</strong>
+<ul>
+<li>LangGraph基础使用
+<ul>
+<li>LangChain与LangGraph的区别</li>
+<li>LangGraph对象：图（节点、边、状态）的定义与使用</li>
+<li>LangGraph进阶：检查点（记忆功能）与中止点（手动介入）</li>
+<li>LangGraph工具：搜索引擎</li>
+<li>LangGraph调试：结合LangSmith查看Agent调用线</li>
+</ul>
+</li>
+<li>LangGraph实战与延展
+<ul>
+<li>LangGraph Agent架构</li>
+<li>基于LangGraph构建生产级AI Agent</li>
+<li>基于LangGraph构建Multi Agent（多智能体）</li>
+</ul>
+</li>
+<li>项目实战
+<ul>
+<li>案例1：基于LangGraph实现多轮对话聊天机器人</li>
+<li>案例2：基于LangGraph构建企业级复杂多代理应用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>项目实战</strong>
+<ul>
+<li>案例1：基于Dify快速构建智能体应用</li>
+<li>案例2：数据分析助手</li>
+<li>案例3：攒机APP智能体</li>
+<li>案例4：基于LangChain Agent构建下一代AI助手</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-大模型微调"><a class="header" href="#6-大模型微调">6. 大模型微调</a></h2>
+<ul>
+<li>
+<p><strong>模型微调基础</strong></p>
+<ul>
+<li>
+<p>模型微调的概念</p>
+<ul>
+<li>模型微调的概念与意义</li>
+<li>微调和RAG的关系</li>
+<li>不同场景下做微调的必要性</li>
+<li>什么是训练/预训练/微调/轻量化微调</li>
+</ul>
+</li>
+<li>
+<p>数据工程</p>
+<ul>
+<li>数据采集与清洗</li>
+<li>数据标注与增强</li>
+<li>数据集划分</li>
+</ul>
+</li>
+<li>
+<p>微调的核心流程</p>
+<ul>
+<li>数据准备与清洗：选择高质量的数据集</li>
+<li>微调技术要点：设置超参数、选择合适的训练方法</li>
+<li>模型评估与验证：确保微调后模型的效果</li>
+</ul>
+</li>
+<li>
+<p>微调框架的选择</p>
+<ul>
+<li>PyTorch框架
+<ul>
+<li>张量的创建、索引、运算等操作</li>
+<li>搭建神经网络，定义模型结构、前向传播、反向传播的流程</li>
+<li>案例：基于PyTorch的模型构建与训练之手写数字识别</li>
+</ul>
+</li>
+<li>HuggingFace Transformers工具</li>
+<li>unsloth框架
+<ul>
+<li>unsloth的开箱即用与高度可定制化</li>
+</ul>
+</li>
+<li>LLaMA-Factory框架</li>
+<li>DeepSpeed</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>大模型训练技术</strong></p>
+<ul>
+<li>分布式训练
+<ul>
+<li>数据并行与模型并行</li>
+<li>梯度累积与同步</li>
+<li>DeepSpeed分布式训练师 Llama Factory/Xtuner</li>
+</ul>
+</li>
+<li>混合精度训练
+<ul>
+<li>FP32与FP16混合使用</li>
+<li>动态损失缩放</li>
+</ul>
+</li>
+<li>模型压缩与加速
+<ul>
+<li>剪枝技术</li>
+<li>量化技术</li>
+<li>知识蒸馏</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>微调技术与应用</strong></p>
+<ul>
+<li>微调策略
+<ul>
+<li>基于预训练模型的微调</li>
+<li>基于特定数据集进行模型微调，包括数据准备、参数设置、训练过程</li>
+<li>解决微调过程中过拟合、训练不收敛等常见问题的方法</li>
+</ul>
+</li>
+<li>轻量化微调技术详解
+<ul>
+<li>Prompt Tuning、P-Tuning、Prefix Tuning</li>
+<li>LoRA、QloRA</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>大模型微调实战篇</strong></p>
+<ul>
+<li>案例1：基于LoRA微调Qwen2 7B</li>
+<li>案例2：基于QloRA微调Llama3 8B</li>
+<li>案例3：基于QloRA微调GLM4 9B</li>
+</ul>
+</li>
+<li>
+<p><strong>Huggingface模块开发实战</strong></p>
+<ul>
+<li>Huggingface的安装和开发流程</li>
+<li>掌握Huggingface库中各种API的调用</li>
+<li>Huggingface工具集：批量编码、Loading、评价指标、管道等</li>
+<li>Transformer加载模型、数据集合并预处理</li>
+</ul>
+</li>
+<li>
+<p><strong>项目实战</strong></p>
+<ul>
+<li>案例1：动手微调一个GPT
+<ul>
+<li>模型加载</li>
+<li>数据加载</li>
+<li>训练器</li>
+</ul>
+</li>
+<li>案例2：医疗问诊助手
+<ul>
+<li>基础应用：理解并应用大模型的微调与预训练</li>
+<li>核心实操：定制化微调预训练模型</li>
+<li>优化技巧：提升微调与预训练的效率与效果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>DeepSeek深度解析</strong></p>
+<ul>
+<li>DeepSeek的基础架构MoE深度解析</li>
+<li>DeepSeek核心优势
+<ul>
+<li>DeepSeek-V3的关键技术解析</li>
+<li>DeepSeek-R1的关键技术解析</li>
+</ul>
+</li>
+<li>Deepspeak中的创新点分析
+<ul>
+<li>模型架构</li>
+<li>训练数据优势</li>
+</ul>
+</li>
+<li>通俗理解模型蒸馏技术以及实现原理
+<ul>
+<li>蒸馏模型基本概述</li>
+<li>蒸馏模型的变体与特征</li>
+</ul>
+</li>
+<li>详解Deepspeak-R1的四阶段训练流程
+<ul>
+<li>训练目标</li>
+<li>数据处理方式</li>
+<li>模型参数调整策略</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-大模型实战工具"><a class="header" href="#7-大模型实战工具">7. 大模型实战工具</a></h2>
+<ul>
+<li><strong>Ollama工具</strong>
+<ul>
+<li>Ollama定义与安装</li>
+<li>如何调用私有大模型</li>
+<li>云端部署（AWS、阿里云）、本地部署等模型部署流程与方法</li>
+<li>Ollama java or python Rest API与模型对话</li>
+</ul>
+</li>
+<li><strong>Dify AI平台</strong>
+<ul>
+<li>Dify定义与搭建</li>
+<li>Dify本地部署与服务器部署</li>
+<li>Dify工作流构建以及工具调用</li>
+<li>Dify导入外部知识库</li>
+<li>项目实战
+<ul>
+<li>案例：如何搭建AI Agent</li>
+<li>案例：搭建智能AI客服</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Claude AI工具</strong>
+<ul>
+<li>Claude注册和使用</li>
+<li>Claude模型与Claude API Key</li>
+<li>Claude Function Calling原理与实现</li>
+<li>实战项目-天气查询</li>
+</ul>
+</li>
+<li><strong>Anthropic MCP</strong>
+<ul>
+<li>FunctionCalling vs MCP
+<ul>
+<li>Function calling是如何工作的？</li>
+<li>Function Calling在企业级应用的关注点</li>
+<li>如何使用FunctionCalling</li>
+</ul>
+</li>
+<li>MCP概念、原理解析与C/S架构</li>
+<li>案例：多种MCP Servers部署与测试</li>
+<li>案例：自定义MCP</li>
+</ul>
+</li>
+<li><strong>AI代码编程工具-Cursor AI</strong>
+<ul>
+<li>Cursor的使用技巧</li>
+<li>Cursor的调试技巧</li>
+<li>快速开发自己的项目</li>
+</ul>
+</li>
+<li><strong>Coze（扣子）平台</strong>
+<ul>
+<li>Coze的概述与注册</li>
+<li>设置提示词</li>
+<li>如何使用工作流</li>
+<li>创建自己的插件</li>
+<li>添加知识库：文本、表格、图片</li>
+<li>创建并使用数据库</li>
+</ul>
+</li>
+<li><strong>AIGC生成式大模型各类工具</strong>
+<ul>
+<li>生成简历，写小红书文案项目</li>
+<li>Kimi+GPT4+文心一言+Gemini大模型实操对比</li>
+<li>大模型辅导学生做数学题实操项目</li>
+<li>小红书创造文案家和抖音脚本创作和分镜头实操项目</li>
+<li>短片小说创作爆款微头条项目</li>
+<li>大模型进行AI画图</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-大模型项目实战"><a class="header" href="#8-大模型项目实战">8. 大模型项目实战</a></h2>
+<ul>
+<li><strong>GPT大型智能翻译助手项目</strong>
+<ul>
+<li>大模型企业级方案设计</li>
+<li>基于GPT-4o大模型+Langchain中间件</li>
+<li>加载数据模块，AI模型加载模块，输出数据模块，可视化界面模块等</li>
+<li>基于Gradio的Web界面，支持PDF、Word，MarkDown等各种文件格式</li>
+</ul>
+</li>
+<li><strong>基于Transformer的NLP项目</strong>
+<ul>
+<li>Transformer模型，以及搭建机器翻译系统</li>
+<li>Encoder-Decoder架构与缩放点击注意力，实时语音和文字翻译模型</li>
+</ul>
+</li>
+<li><strong>基于RAG贝壳网智能客服问答系统</strong>
+<ul>
+<li>GLM4-9B + Langchain中间件</li>
+<li>Vector数据，相似检索</li>
+<li>数据Split之后通过Embedding向量化</li>
+<li>Gradio的UI界面，FastAPI接口，uvicorn服务器</li>
+</ul>
+</li>
+<li><strong>京东客户购买意向预测项目</strong>
+<ul>
+<li>数据清洗，数据挖掘，数据探索，构建user信息</li>
+<li>特征工程：数据处理维度，数据基本特征，用户类别，行为特征处理，构建数据集</li>
+<li>Xsboost建模：数据加载，模型训练，t特征重要性查看，算法预测验证数据，验证数据模型评估，测试数据模型评估</li>
+</ul>
+</li>
+<li><strong>TEXT2SQL+Qwen3大模型项目实战</strong>
+<ul>
+<li>TEXT2SQL项目介绍</li>
+<li>数据库连接以及langchain自带工具集学习</li>
+<li>核心工作流开发：工作流规划-定义异步工作流-异步执行工作流</li>
+<li>如何私有化部署最新Qwen3</li>
+<li>MCP服务端开发</li>
+</ul>
+</li>
+</ul>
+<h2 id="9-前沿多模态"><a class="header" href="#9-前沿多模态">9. 前沿：多模态</a></h2>
+<ul>
+<li>
+<p><strong>多模态理论基础</strong></p>
+<ul>
+<li>
+<p><strong>多模态的最新进展</strong></p>
+<ul>
+<li>模态与多模态的概念</li>
+<li>为什么需要多模态？通往AGI的必经之路</li>
+</ul>
+</li>
+<li>
+<p><strong>多模态技术应用领域</strong></p>
+<ul>
+<li>人机交互
+<ul>
+<li>多模态交互界面设计</li>
+<li>多模态情感计算</li>
+</ul>
+</li>
+<li>智能安防
+<ul>
+<li>多模态身份认证</li>
+<li>智能视频监控</li>
+</ul>
+</li>
+<li>医疗健康
+<ul>
+<li>远程医疗咨询</li>
+<li>辅助诊断与治疗</li>
+</ul>
+</li>
+<li>智能教育
+<ul>
+<li>多模态学习资源</li>
+<li>智能教学系统</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>大模型与计算机视觉</strong></p>
+<ul>
+<li>安防视觉识别模型原理</li>
+<li>零部件缺陷检测模型原理</li>
+<li>医疗诊断识别模型原理</li>
+<li>无人驾驶视觉模型原理</li>
+</ul>
+</li>
+<li>
+<p><strong>图像生成技术概述</strong></p>
+<ul>
+<li>扩散模型—Diffusion Model</li>
+<li>基于Diffusion扩散模型的多模态模型</li>
+<li>稳定扩散模型—StableDiffusion</li>
+</ul>
+</li>
+<li>
+<p><strong>多模态机器学习与典型任务</strong></p>
+<ul>
+<li>跨模态训练</li>
+<li>Language-Audio / Vision-Audio / Vision-Language</li>
+<li>AffectComputing情感计算</li>
+</ul>
+</li>
+<li>
+<p><strong>多模态技术未来发展趋势</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>多模态的微调与优化</strong></p>
+<ul>
+<li>多模态模型的微调
+<ul>
+<li>迁移学习</li>
+<li>零样本学习</li>
+</ul>
+</li>
+<li>多模态模型的优化
+<ul>
+<li>剪枝</li>
+<li>量化</li>
+<li>蒸馏</li>
+<li>压缩</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>多模态模型的部署</strong></p>
+<ul>
+<li>本地化私有部署图文生成模型</li>
+<li>本地化私有部署文生视频模型</li>
+<li>选择模型打包格式</li>
+<li>硬件加速方案</li>
+</ul>
+</li>
+<li>
+<p><strong>项目实战</strong></p>
+<ul>
+<li>案例1：基于BLIP的图生文</li>
+<li>案例2：基于StableDiffusion的文生图</li>
+<li>案例3：基于Llama-Vision的视觉问答</li>
+<li>案例4：短视频脚本生成（GPT-4o+多模态提示）</li>
+<li>案例5：医疗影像报告生成（BLIP+LLM）</li>
+</ul>
+</li>
+</ul>
+<h2 id="10-储备系统开发"><a class="header" href="#10-储备系统开发">10. 储备：系统开发</a></h2>
+<ul>
+<li><strong>容器化技术</strong>
+<ul>
+<li>Docker
+<ul>
+<li>Docker核心概念（镜像、容器、仓库）</li>
+<li>Dockerfile编写与镜像构建</li>
+<li>容器网络与数据卷管理</li>
+<li>大模型服务的Docker化封装</li>
+</ul>
+</li>
+<li>K8S（Kubernetes）
+<ul>
+<li>K8S核心组件（Pod、Deployment、Service、Ingress）</li>
+<li>大模型服务的K8S部署与扩缩容</li>
+<li>资源调度与GPU资源管理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>云计算平台</strong>
+<ul>
+<li>AWS</li>
+<li>阿里云</li>
+</ul>
+</li>
+<li><strong>微服务架构设计</strong></li>
+</ul>
+<h2 id="11-进阶ai算法"><a class="header" href="#11-进阶ai算法">11. 进阶：AI算法</a></h2>
+<ul>
+<li>
+<p><strong>Python数据分析</strong></p>
+<ul>
+<li>NumPy、Pandas、Matplotlib</li>
+</ul>
+</li>
+<li>
+<p><strong>机器学习</strong></p>
+<ul>
+<li>概念与工具
+<ul>
+<li>特征工程</li>
+<li>模型评估&amp;模型选择</li>
+</ul>
+</li>
+<li>监督学习算法
+<ul>
+<li>线性回归</li>
+<li>逻辑回归</li>
+<li>KNN近邻算法</li>
+<li>其它监督学习算法
+<ul>
+<li>朴素贝叶斯</li>
+<li>决策树</li>
+<li>支持向量机</li>
+<li>集成学习</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无监督学习
+<ul>
+<li>聚类
+<ul>
+<li>K-means</li>
+<li>高斯混合聚类</li>
+<li>密度聚类</li>
+<li>层次聚类</li>
+<li>谱聚类</li>
+</ul>
+</li>
+<li>降维
+<ul>
+<li>主成分分析</li>
+<li>奇异值分解</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>深度学习、神经网络与PyTorch开发</strong></p>
+<ul>
+<li>神经网络基础
+<ul>
+<li>传统机器学习与深度学习的发展</li>
+<li>神经网络的定义和分类</li>
+</ul>
+</li>
+<li>神经网络基本概念
+<ul>
+<li>损失函数</li>
+<li>数值微分</li>
+<li>梯度计算</li>
+<li>随机梯度下降法</li>
+</ul>
+</li>
+<li>PyTorch
+<ul>
+<li>PyTorch的安装</li>
+<li>PyTorch中的张量
+<ul>
+<li>张量创建与数值计算</li>
+<li>张量类型转换</li>
+<li>张量拼接</li>
+<li>张量索引</li>
+<li>运算函数与自动微分模块</li>
+<li>模型定义与保存加载</li>
+</ul>
+</li>
+<li>利用PyTorch进行深度学习</li>
+<li>常见问题分析</li>
+</ul>
+</li>
+<li>深度学习常见模型1：卷积神经网络CNN
+<ul>
+<li>图像特征提取</li>
+<li>目标检测</li>
+</ul>
+</li>
+<li>深度学习常见模型2：循环神经网络RNN
+<ul>
+<li>时间序列预测</li>
+<li>自然语言处理NLP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>NLP自然语言处理</strong></p>
+<ul>
+<li>NLP的概述
+<ul>
+<li>NLP的基本概念</li>
+<li>NLP的两大核心任务：NLU/NLI、NLG</li>
+</ul>
+</li>
+<li>NLP的工作原理
+<ul>
+<li>文本预处理</li>
+<li>特征提取</li>
+<li>文本分析</li>
+<li>模型训练</li>
+</ul>
+</li>
+<li>文本是如何转换为数据的
+<ul>
+<li>语言模型（N-Gram模型）</li>
+<li>分词 - Tokenization</li>
+<li>Word2vec模型</li>
+<li>打造能识别文本情感的模型</li>
+</ul>
+</li>
+<li>详解语言模型与注意力机制</li>
+<li>大模型关键技术解析
+<ul>
+<li>预训练</li>
+<li>SFT (Supervised Fine-Tuning)</li>
+<li>RLHF (Reinforcement Learning from Human Feedback)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>算法详解与面试问答技巧</strong></p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Molecular Biology/高通量测序技术.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Molecular Biology/高通量测序技术.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-c22b7243.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
