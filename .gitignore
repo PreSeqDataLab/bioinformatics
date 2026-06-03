@@ -1,0 +1,16 @@
+# mdbook build output (not tracked in main branch, deployed via gh-pages)
+book/
+
+# Node.js dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

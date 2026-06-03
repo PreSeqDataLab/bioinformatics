@@ -1,0 +1,655 @@
+# AI大模型应用&工程化路线图
+
+## 1. 前置知识
+- **编程语言**
+  - Python编程基础
+    - Anaconda、Jupyter、PyCharm等开发环境的安装与配置
+    - 变量、数据类型、控制语句、函数等基础语法
+    - 熟悉Python编码规范（如PEP8），进行简单编程练习
+  - Java编程基础
+    - 基础语法：变量、运算、控制语句
+    - 面向对象编程：类与对象、封装&继承&多态、接口
+    - 集合、IO、多线程、StreamAPI
+  - Go、C#、JavaScript、...
+- **数学基础**
+  - 高等数学：导数、偏导
+  - 线性代数：标量与向量、矩阵与张量、矩阵运算等
+  - 概率与统计：概率分布、贝叶斯定理、似然函数等
+
+
+## 2. 大模型应用基础
+- **基础知识**
+  - AI与大模型的发展历程
+    - 从机器学习到深度学习的飞跃
+    - 大模型的诞生与发展
+  - 大模型与通用人工智能
+    - 大模型的起源与发展
+    - 认知与解析、大模型与AGI关系、发展趋势
+- **AI应用场景**
+  - 自然语言处理-NLP
+    - 分词、词性标注、命名实体识别等NLP基础概念
+    - 文本分类、文本生成、问答系统、信息摘要、机器翻译
+  - 计算机视觉-CV
+    - 熟悉图像分类、目标检测、语义分割等CV基本概念
+    - 图像识别、视频分析
+  - 语音识别与合成
+    - 语音到文本、文本到语音
+- **主流大模型的使用**
+  - 国际知名
+    - Meta：Llama系列
+    - OpenAI：GPT系列
+    - Google：Gemini
+    - Anthropic：Claude系列
+  - 国产主流
+    - 深度求索：DeepSeek
+    - 阿里：Qwen系列
+    - 百度：文心大模型
+    - 智谱清言：GLM系列
+  - 主流大模型平台的功能特点、优势与适用场景
+- **大模型的发展历程、关键推动因素与趋势**
+  - GPT为例
+- **架构原理**
+  - Transformer架构讲解与动手实现
+    - 编码器-解码器结构
+    - 自注意力机制与多头注意力机制
+    - 大模型如何理解和表示单词
+    - 大模型如何理解并预测输入的内容
+  - Transformer变体之Bert架构
+    - 使用上下文双向的预测模式（类似于填空）
+  - Transformer变体之GPT架构
+    - 使用从前往后的单向预测模式（类似于补全）
+  - MoE模型
+    - MoE模型的工作原理
+    - MoE模型的优点
+    - MoE模型的应用
+      - 自然语言处理
+      - 计算机视觉
+      - 推荐系统
+- **硬件基础**
+  - GPU加速原理
+    - GPU与CPU计算核心的区别对比
+  - CUDA核心与显存管理
+  - 混合精度训练
+    - FP16/FP32混合使用
+- **提示词工程设计**
+  - **提示词工程基础**
+    - Prompt基本概念、在大模型应用中的重要性
+    - Prompt四要素：角色、目标、执行方案、输出格式
+    - Prompt设计的基本原则：简洁性、上下文与语境的设计、问题明确性、结构化与非结构化prompt
+
+  - **Prompt调优与技巧**
+    - 常见的Prompt工程设计链路
+    - 零样本提示(Zero-Shot)
+    - 少样本提示(Few-Shot)
+    - 链式思考(思维链CoT)
+    - 自我一致性(自洽性, Self-Consistency)
+    - 思维树(Tree-of-thought, ToT)
+    - 优化Prompt的输出效果
+    - 调整Prompt中的语句顺序
+    - 指令和示例的数量与多样性
+    - 负面提示与约束
+    - 增强输出的精确度
+
+  - **高级Prompt工程技巧**
+    - 指令模型vs推理模型的prompt的不同设计
+    - 复杂任务的多步骤Prompt设计
+    - 解析增强对AI大模型反馈结果的影响
+    - 用prompt调优prompt
+    - 提示词注入
+    - 提示词防御
+
+- **项目实战**
+  - 案例：短剧脚本生成
+  - 案例：网络爆款文案生成
+  - 案例：数据查询SQL语句生成
+  - 案例：文本生成任务的Prompt设计（如编写文章、故事生成）
+  - 案例：情感分析与文本分类的Prompt优化
+  - 案例：复杂任务的多步骤Prompt设计（如数据分析报告生成）
+
+
+## 3. 大模型应用实战之主流开发框架
+- **LangChain框架**
+  - LangChain框架简介
+    - 构建大模型应用的完整流程：大模型交互、数据整合、应用部署
+    - LangChain的安装
+    - 调用大模型三要素：base_url、api_key、model_name
+  - LangChain核心组件
+    - 模型 IO 操作
+      - 几种不同Message
+      - Invoke、stream、batch、ainvoke等
+      - Prompt Template
+      - Output Parsers
+      - Function Calling
+    - 链架构：Chains / LCL
+      - Chains的设计理念
+      - 传统的Chain
+      - SequentialChain
+      - RouterChain
+      - Chains功能实战
+    - Memory记忆功能
+      - 不借助LangChain，如何实现记忆功能
+      - Memory模块的设计理念
+      - 如何自定义Memory模块
+      - spacy工具安装
+      - 内置的Memory模块
+    - 智能体Agents
+      - Agent架构设计理念的前景
+      - 基于LangChain的Agent抽象
+      - 自定义基于ReAct范式的Agents
+      - 使用LangChain定义的ReAct策略
+    - Retrieval
+      - RAG架构
+      - Source and data loaders
+      - Text Splitters
+      - Text embedding models
+      - vector store
+  - 项目实战
+    - 案例1：LangChain构建智能问答系统
+    - 案例2：LangChain实现文档摘要生成
+    - 案例3：LangChain实现AI销售助手
+  
+- **LangChain4J框架**
+  
+  - LangChain4J框架简介
+    - LangChain4J的定位
+    - 核心特性：低代码API、内存优化、本地模型支持
+    - 安装：Maven/Gradle依赖配置
+    
+  - 核心组件
+  
+    - LangChain4J基础架构
+      - LLM接口：支持OpenAI、DeepSeek、ZhiPu AI、Anthropic
+      - 内容管理：维护对话上下文（Memory），支持短期/长期记忆
+      - 提示模板：动态生成prompt（PromptTemplate），支持变量替换和格式控制
+      - 链（Chain）：串联多个组件（如LLM+数据库查询），实现复杂逻辑
+      - 智能体（Agent）：根据用户输入动态选择工具（API/数据库）执行任务
+  
+    - 聊天与语言模型
+      - LLM API类型：LanguageModel、ChatLanguageModel
+      - ChatLanguageModel核心方法
+      - 消息类型：UserMessage、AiMessage、SystemMessage、ToolExecutionResultMessage、CustomMessage
+    - ChatMemory组件
+      - ChatMemory的作用：消息管理、持久化存储、特殊消息处理
+      - 核心实现与特性
+    - AI Services的使用
+      - AI Services的定位与优势
+      - 注解支持：@SystemMessage、@UserMessage
+    - RAG
+      - 什么是RAG
+      - RAG核心流程：索引阶段、检索阶段
+      - RAG类型：EasyRAG、NaiveRAG、AdvancedRAG
+      - 核心API与组件：Document、Metadata、Document Loader、Embedding Model等
+    - 与SpringBoot集成
+  
+  - 项目实战
+    - 案例1：本地知识问答系统（RAG+ChromaDB）
+    - 案例2：自动化报表分析（代理+表格工具）
+    - 案例3：多模态AI助手（集成TTS/OCR）
+  
+- **SpringAI & SpringAI Alibaba框架**
+  - Spring AI框架简介
+    - Spring AI的定位
+    - 核心优势
+    - 安装与配置
+  - 核心组件
+    - 模型交互（Model I/O）
+      - 统一接口设计：AiClient与AiStreamClient
+      - 多模型支持：OpenAI、HuggingFace、本地模型集成
+      - 提示工程：动态提示模板（PromptTemplate）与输出解析（OutputParser）
+    - 数据整合（Retrieval）
+      - 向量数据库集成：RedisVectorStore、PgVector
+      - 文档处理链：文本分块（TextSplitter）、嵌入模型（EmbeddingModel）
+      - RAG实现：检索器（Retriever）与生成器组合
+    - 链式执行（Chains）
+      - 链式抽象：Chain接口与SequentialChain
+      - 路由链（RouterChain）：多任务动态路由
+      - 实战：文档总结链、问答链构建
+    - 代理（Agents）
+      - 代理机制：基于ReAct的决策框架
+      - 工具集成：自定义工具（如数据库查询、API调用）
+      - 案例：销售顾问代理实现
+    - 记忆管理（Memory）
+      - 对话状态存储：ChatMemory接口
+      - 存储后端：Redis、In-Memory配置
+  - 项目实战
+    - 案例1：基于Spring AI的智能客服系统（集成RAG）
+    - 案例2：文档自动摘要生成（链式调用+文本分割）
+    - 案例3：企业级RAG问答系统（向量库+代理）
+
+
+## 4. 大模型应用实战之RAG开发
+- **EmbeddingModel的嵌入模型**
+  - 嵌入表示的基本概念与工作原理
+    - Word2vec、GloVe、FastText等经典方法
+  - 常见的嵌入技术
+    - 词嵌入：Word2Vec、GloVe、FastText等经典方法
+    - 文本嵌入：BERT、GPT等预训练模型的嵌入
+    - 图像和音视频的嵌入表示
+    - 特征嵌入：如何将结构化数据转为嵌入表示
+- **VectorStore向量存储**
+  - 向量数据库介绍
+    - 如何存储和检索嵌入
+    - 常见的向量数据库：Milvus、Chroma、Pinecone、FAISS等
+    - 向量数据库与传统数据库的区别与优劣势对比
+  - 向量数据库的核心操作
+    - Add添加数据
+    - Query向量搜索
+    - Update/Delete管理数据
+  - 使用向量数据库进行相似性检索
+  - 向量存储应用
+    - 文本相似度搜索：基于向量的文本匹配
+    - 图像识别与搜索：特征向量的向量匹配
+    - 推荐系统：基于用户与物品的向量匹配
+- **RAG技术概述**
+  - LLM面临的主要问题
+    - 信息偏差/幻觉、知识更新滞后、内容不可追溯
+    - 领域专业知识能力欠缺、长文本处理能力较弱
+  - 什么是RAG技术？
+  - RAG技术优势
+    - 外部知识的引用、生成内容的准确性
+    - 高度可定制化、模型的解释性
+    - 数据处理更便捷、降低开发成本
+  - RAG的核心原则与工作流程解析
+- **RAG工程化**
+  - RAG应用流程
+    - 数据准备阶段
+      - 数据获取
+      - 文本分割
+      - 向量化（Embedding）
+      - 数据入库
+    - 检索&生成阶段
+      - 问题向量化
+      - 数据检索
+      - 注入Prompt
+      - LLM生成答案
+  - RAG技术关键环节
+    - 数据检索
+    - Prompt设计
+- **RAG技术迭代**
+  - NaiveRAG→AdvancedRAG→ModularRAG
+  - GraphRAG
+    - 知识图谱
+    - GraphRAG原理与工作流程
+  - AgenticRAG
+- **RAG的使用效果评估**
+  - 质量指标
+    - 上下文相关性、答案忠实度、答案相关性
+  - 能力指标
+    - 鲁棒性、负面信息的排除能力、应对模糊情况的健壮性
+  - 评估工具
+    - RAGS评估、TruLens评估
+- **RAG在AI应用架构中的使用**
+  - 使用RAG提升对话系统的表现与智能化
+  - 结合检索与生成的实际案例分析
+- **项目实战**
+  - 案例1：QAnything+Chroma+LLM构建企业私有知识库问答/客服助手
+  - 案例2：Dify+DeepSeek构建企业私有知识库问答/客服助手
+  - 案例3：RAGFlow+DeepSeek构建企业级知识库
+
+
+## 5. 大模型应用实战之Agent开发
+- **认识智能体**
+  - 智能体的定义与作用
+  - 智能体的基本架构与功能
+    - 规划（Planning）
+    - 记忆（Memory）
+    - 工具使用（Tools）
+    - 执行（Action）
+- **工具调用：Function Calling**
+  - FunctionCalling的概念与应用
+    - FunctionCalling简单理解
+    - FunctionCalling的实现过程
+  - 跨系统与跨语言的FunctionCalling
+    - FunctionCalling支持的国产模型介绍
+    - 如何实现不同模型、不同系统的功能调用
+  - FunctionCalling的优化
+    - 提升FunctionCalling的性能与稳定性
+    - 设计高效的FunctionCalling机制
+    - 多Function Calling的使用
+- **工作流Workflow的搭建与使用**
+  - 为什么我们需要工作流？
+  - 大模型应用工作流的关键要素解析
+  - Agentfy Workflow的工作流要素演示
+  - 项目实战
+    - 案例1：一键生成学术论文
+    - 案例2：一键生成爆款视频
+- **Agent系统**
+  - 什么是多Agent？
+  - AutoGen框架
+  - MetaGPT框架
+  - Multi-Agent会话
+- **LangGraph框架**
+  - LangGraph基础使用
+    - LangChain与LangGraph的区别
+    - LangGraph对象：图（节点、边、状态）的定义与使用
+    - LangGraph进阶：检查点（记忆功能）与中止点（手动介入）
+    - LangGraph工具：搜索引擎
+    - LangGraph调试：结合LangSmith查看Agent调用线
+  - LangGraph实战与延展
+    - LangGraph Agent架构
+    - 基于LangGraph构建生产级AI Agent
+    - 基于LangGraph构建Multi Agent（多智能体）
+  - 项目实战
+    - 案例1：基于LangGraph实现多轮对话聊天机器人
+    - 案例2：基于LangGraph构建企业级复杂多代理应用
+- **项目实战**
+  - 案例1：基于Dify快速构建智能体应用
+  - 案例2：数据分析助手
+  - 案例3：攒机APP智能体
+  - 案例4：基于LangChain Agent构建下一代AI助手
+
+
+## 6. 大模型微调
+- **模型微调基础**
+
+  - 模型微调的概念
+    - 模型微调的概念与意义
+    - 微调和RAG的关系
+    - 不同场景下做微调的必要性
+    - 什么是训练/预训练/微调/轻量化微调
+
+
+  - 数据工程
+    - 数据采集与清洗
+    - 数据标注与增强
+    - 数据集划分
+  - 微调的核心流程
+    - 数据准备与清洗：选择高质量的数据集
+    - 微调技术要点：设置超参数、选择合适的训练方法
+    - 模型评估与验证：确保微调后模型的效果
+  - 微调框架的选择
+    - PyTorch框架
+      - 张量的创建、索引、运算等操作
+      - 搭建神经网络，定义模型结构、前向传播、反向传播的流程
+      - 案例：基于PyTorch的模型构建与训练之手写数字识别
+    - HuggingFace Transformers工具
+    - unsloth框架
+      - unsloth的开箱即用与高度可定制化
+    - LLaMA-Factory框架
+    - DeepSpeed
+
+- **大模型训练技术**
+
+  - 分布式训练
+    - 数据并行与模型并行
+    - 梯度累积与同步
+    - DeepSpeed分布式训练师 Llama Factory/Xtuner
+  - 混合精度训练
+    - FP32与FP16混合使用
+    - 动态损失缩放
+  - 模型压缩与加速
+    - 剪枝技术
+    - 量化技术
+    - 知识蒸馏
+
+- **微调技术与应用**
+
+  - 微调策略
+    - 基于预训练模型的微调
+    - 基于特定数据集进行模型微调，包括数据准备、参数设置、训练过程
+    - 解决微调过程中过拟合、训练不收敛等常见问题的方法
+  - 轻量化微调技术详解
+    - Prompt Tuning、P-Tuning、Prefix Tuning
+    - LoRA、QloRA
+
+- **大模型微调实战篇**
+  - 案例1：基于LoRA微调Qwen2 7B
+  - 案例2：基于QloRA微调Llama3 8B
+  - 案例3：基于QloRA微调GLM4 9B
+
+- **Huggingface模块开发实战**
+  - Huggingface的安装和开发流程
+  - 掌握Huggingface库中各种API的调用
+  - Huggingface工具集：批量编码、Loading、评价指标、管道等
+  - Transformer加载模型、数据集合并预处理
+
+- **项目实战**
+  - 案例1：动手微调一个GPT
+    - 模型加载
+    - 数据加载
+    - 训练器
+  - 案例2：医疗问诊助手
+    - 基础应用：理解并应用大模型的微调与预训练
+    - 核心实操：定制化微调预训练模型
+    - 优化技巧：提升微调与预训练的效率与效果
+
+- **DeepSeek深度解析**
+  - DeepSeek的基础架构MoE深度解析
+  - DeepSeek核心优势
+    - DeepSeek-V3的关键技术解析
+    - DeepSeek-R1的关键技术解析
+  - Deepspeak中的创新点分析
+    - 模型架构
+    - 训练数据优势
+  - 通俗理解模型蒸馏技术以及实现原理
+    - 蒸馏模型基本概述
+    - 蒸馏模型的变体与特征
+  - 详解Deepspeak-R1的四阶段训练流程
+    - 训练目标
+    - 数据处理方式
+    - 模型参数调整策略
+
+
+## 7. 大模型实战工具
+- **Ollama工具**
+  - Ollama定义与安装
+  - 如何调用私有大模型
+  - 云端部署（AWS、阿里云）、本地部署等模型部署流程与方法
+  - Ollama java or python Rest API与模型对话
+- **Dify AI平台**
+  - Dify定义与搭建
+  - Dify本地部署与服务器部署
+  - Dify工作流构建以及工具调用
+  - Dify导入外部知识库
+  - 项目实战
+    - 案例：如何搭建AI Agent
+    - 案例：搭建智能AI客服
+- **Claude AI工具**
+  - Claude注册和使用
+  - Claude模型与Claude API Key
+  - Claude Function Calling原理与实现
+  - 实战项目-天气查询
+- **Anthropic MCP**
+  - FunctionCalling vs MCP
+    - Function calling是如何工作的？
+    - Function Calling在企业级应用的关注点
+    - 如何使用FunctionCalling
+  - MCP概念、原理解析与C/S架构
+  - 案例：多种MCP Servers部署与测试
+  - 案例：自定义MCP
+- **AI代码编程工具-Cursor AI**
+  - Cursor的使用技巧
+  - Cursor的调试技巧
+  - 快速开发自己的项目
+- **Coze（扣子）平台**
+  - Coze的概述与注册
+  - 设置提示词
+  - 如何使用工作流
+  - 创建自己的插件
+  - 添加知识库：文本、表格、图片
+  - 创建并使用数据库
+- **AIGC生成式大模型各类工具**
+  - 生成简历，写小红书文案项目
+  - Kimi+GPT4+文心一言+Gemini大模型实操对比
+  - 大模型辅导学生做数学题实操项目
+  - 小红书创造文案家和抖音脚本创作和分镜头实操项目
+  - 短片小说创作爆款微头条项目
+  - 大模型进行AI画图
+  - ...
+
+
+
+## 8. 大模型项目实战
+- **GPT大型智能翻译助手项目**
+  - 大模型企业级方案设计
+  - 基于GPT-4o大模型+Langchain中间件
+  - 加载数据模块，AI模型加载模块，输出数据模块，可视化界面模块等
+  - 基于Gradio的Web界面，支持PDF、Word，MarkDown等各种文件格式
+- **基于Transformer的NLP项目**
+  - Transformer模型，以及搭建机器翻译系统
+  - Encoder-Decoder架构与缩放点击注意力，实时语音和文字翻译模型
+- **基于RAG贝壳网智能客服问答系统**
+  - GLM4-9B + Langchain中间件
+  - Vector数据，相似检索
+  - 数据Split之后通过Embedding向量化
+  - Gradio的UI界面，FastAPI接口，uvicorn服务器
+- **京东客户购买意向预测项目**
+  - 数据清洗，数据挖掘，数据探索，构建user信息
+  - 特征工程：数据处理维度，数据基本特征，用户类别，行为特征处理，构建数据集
+  - Xsboost建模：数据加载，模型训练，t特征重要性查看，算法预测验证数据，验证数据模型评估，测试数据模型评估
+- **TEXT2SQL+Qwen3大模型项目实战**
+  - TEXT2SQL项目介绍
+  - 数据库连接以及langchain自带工具集学习
+  - 核心工作流开发：工作流规划-定义异步工作流-异步执行工作流
+  - 如何私有化部署最新Qwen3
+  - MCP服务端开发
+
+## 9. 前沿：多模态
+
+- **多模态理论基础**
+
+  - **多模态的最新进展**
+    - 模态与多模态的概念
+    - 为什么需要多模态？通往AGI的必经之路
+  - **多模态技术应用领域**
+    - 人机交互
+      - 多模态交互界面设计
+      - 多模态情感计算
+    - 智能安防
+      - 多模态身份认证
+      - 智能视频监控
+    - 医疗健康
+      - 远程医疗咨询
+      - 辅助诊断与治疗
+    - 智能教育
+      - 多模态学习资源
+      - 智能教学系统
+  - **大模型与计算机视觉**
+    - 安防视觉识别模型原理
+    - 零部件缺陷检测模型原理
+    - 医疗诊断识别模型原理
+    - 无人驾驶视觉模型原理
+  - **图像生成技术概述**
+    - 扩散模型—Diffusion Model
+    - 基于Diffusion扩散模型的多模态模型
+    - 稳定扩散模型—StableDiffusion
+  - **多模态机器学习与典型任务**
+    - 跨模态训练
+    - Language-Audio / Vision-Audio / Vision-Language
+    - AffectComputing情感计算
+
+  - **多模态技术未来发展趋势**
+
+
+- **多模态的微调与优化**
+  - 多模态模型的微调
+    - 迁移学习
+    - 零样本学习
+  - 多模态模型的优化
+    - 剪枝
+    - 量化
+    - 蒸馏
+    - 压缩
+- **多模态模型的部署**
+  - 本地化私有部署图文生成模型
+  - 本地化私有部署文生视频模型
+  - 选择模型打包格式
+  - 硬件加速方案
+- **项目实战**
+  - 案例1：基于BLIP的图生文
+  - 案例2：基于StableDiffusion的文生图
+  - 案例3：基于Llama-Vision的视觉问答
+  - 案例4：短视频脚本生成（GPT-4o+多模态提示）
+  - 案例5：医疗影像报告生成（BLIP+LLM）
+
+
+## 10. 储备：系统开发
+- **容器化技术**
+  - Docker
+    - Docker核心概念（镜像、容器、仓库）
+    - Dockerfile编写与镜像构建
+    - 容器网络与数据卷管理
+    - 大模型服务的Docker化封装
+  - K8S（Kubernetes）
+    - K8S核心组件（Pod、Deployment、Service、Ingress）
+    - 大模型服务的K8S部署与扩缩容
+    - 资源调度与GPU资源管理
+- **云计算平台**
+  - AWS
+  - 阿里云
+- **微服务架构设计**
+
+## 11. 进阶：AI算法
+
+- **Python数据分析**
+  - NumPy、Pandas、Matplotlib
+
+- **机器学习**
+  - 概念与工具
+    - 特征工程
+    - 模型评估&模型选择
+  - 监督学习算法
+    - 线性回归
+    - 逻辑回归
+    - KNN近邻算法
+    - 其它监督学习算法
+      - 朴素贝叶斯
+      - 决策树
+      - 支持向量机
+      - 集成学习
+  - 无监督学习
+    - 聚类
+      - K-means
+      - 高斯混合聚类
+      - 密度聚类
+      - 层次聚类
+      - 谱聚类
+    - 降维
+      - 主成分分析
+      - 奇异值分解
+- **深度学习、神经网络与PyTorch开发**
+  - 神经网络基础
+    - 传统机器学习与深度学习的发展
+    - 神经网络的定义和分类
+  - 神经网络基本概念
+    - 损失函数
+    - 数值微分
+    - 梯度计算
+    - 随机梯度下降法
+  - PyTorch
+    - PyTorch的安装
+    - PyTorch中的张量
+      - 张量创建与数值计算
+      - 张量类型转换
+      - 张量拼接
+      - 张量索引
+      - 运算函数与自动微分模块
+      - 模型定义与保存加载
+    - 利用PyTorch进行深度学习
+    - 常见问题分析
+  - 深度学习常见模型1：卷积神经网络CNN
+    - 图像特征提取
+    - 目标检测
+  - 深度学习常见模型2：循环神经网络RNN
+    - 时间序列预测
+    - 自然语言处理NLP
+- **NLP自然语言处理**
+  - NLP的概述
+    - NLP的基本概念
+    - NLP的两大核心任务：NLU/NLI、NLG
+  - NLP的工作原理
+    - 文本预处理
+    - 特征提取
+    - 文本分析
+    - 模型训练
+  - 文本是如何转换为数据的
+    - 语言模型（N-Gram模型）
+    - 分词 - Tokenization
+    - Word2vec模型
+    - 打造能识别文本情感的模型
+  - 详解语言模型与注意力机制
+  - 大模型关键技术解析
+    - 预训练
+    - SFT (Supervised Fine-Tuning)
+    - RLHF (Reinforcement Learning from Human Feedback)
+- **算法详解与面试问答技巧**
