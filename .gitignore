@@ -1,4 +1,4 @@
-# mdbook build output
+# mdbook build output (not tracked in main branch, deployed via gh-pages)
 book/
 
 # Node.js dependencies
