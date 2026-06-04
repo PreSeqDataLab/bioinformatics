@@ -10,6 +10,7 @@ build-dir = "book"
 git-repository-url = "https://github.com/PreSeqDataLab/bioinformatics"
 edit-url-template = "https://github.com/PreSeqDataLab/bioinformatics/edit/main/{path}"
 additional-css = ["theme/style.css"]
+additional-js = ["assets/custom.js", "assets/bigPicture.js"]
 
 [output.html.fold]
 enable = true
